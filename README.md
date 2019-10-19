@@ -7,9 +7,9 @@ and [PixiJS](http://www.pixijs.com/) v4.7.0 for rendering.
 
 ### Configuration options
 
--  Hexagon size (with, height)
--  Number of hexes (x/columns,y/rows)
+-  Edge size
 -  Orientation
+-  Number of hexes (x/columns,y/rows)
 -  Shapes
 -  Coordinate system
 -  Show / hide coordinates
