@@ -12,4 +12,5 @@ and [PixiJS](http://www.pixijs.com/) v4.7.0 for rendering.
 -  Number of hexes (columns,rows)
 -  Coordinates
 -  Show / hide coordinates
+-  Line Thickness
 
