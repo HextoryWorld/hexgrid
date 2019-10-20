@@ -22,7 +22,7 @@ window.onload = function() {
     $('#lineThickness').val(settings.lineThickness);
 
     let canvas = document.getElementById("canvas");
-    let app = new PIXI.Application({ width: settings.screenW, height: settings.screenH, transparent: true, view: canvas });
+    let app = new PIXI.Application({ width: settings.screenW, height: settings.screenH, transparent: true, preserveDrawingBuffer:true, view: canvas });
 
     loadGrid(app, settings);
 
@@ -92,4 +92,8 @@ function applySettings(app) {
 
     loadGrid(app, settings);
     $("#gridSettingsModal").modal("hide");
+}
+
+function downloadCanvasAsPng() {
+    ReImg.fromCanvas(document.querySelector('canvas')).downloadPng('hexGrid.png');
 }
