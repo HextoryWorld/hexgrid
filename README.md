@@ -7,7 +7,7 @@ A grid generator made in Javascript. Uses the hex grid library [Honeycomb](https
 
 ### Demo
 
-You can see the generator working at the [Demo Page](https://josemanuelperezsevilla.github.io/hexgrid/)
+You can see the generator working at the [Demo Page](https://josemanuelperezsevilla.github.io/hexgrid/).
 
 ### Configuration options
 
