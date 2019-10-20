@@ -5,6 +5,10 @@
 A grid generator made in Javascript. Uses the hex grid library [Honeycomb](https://github.com/flauwekeul/honeycomb) v3.1.0, 
 [PixiJS](http://www.pixijs.com/) v4.7.0 for rendering and [reimg](https://github.com/gillyb/reimg) library for converting image formats.
 
+### Demo
+
+You can see the generator working at the [Demo Page](https://josemanuelperezsevilla.github.io/hexgrid/)
+
 ### Configuration options
 
 -  Edge size
