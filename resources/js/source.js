@@ -26,8 +26,10 @@ window.onload = function() {
 
     loadGrid(app, settings);
 
-    $("#gridSettingsModal").submit(function(event){
-        for (let i = app.stage.children.length - 1; i >= 0; i--) {	app.stage.removeChild(app.stage.children[i]);};
+    $("#gridSettingsModal").submit(function(){
+        for (let i = app.stage.children.length - 1; i >= 0; i--) {
+            app.stage.removeChild(app.stage.children[i]);
+        }
         applySettings(app);
         return false;
     });
@@ -35,7 +37,6 @@ window.onload = function() {
 
 function loadGrid(app, settings) {
     let graphics = new PIXI.Graphics();
-    console.log(settings)
     let Hex = Honeycomb.extendHex({ size: settings.hexSize,  orientation: settings.hexOrientation });
     //let Hex = Honeycomb.extendHex({ size: {width: 72, height: 72},  orientation: settings.hexOrientation });
     let Grid = Honeycomb.defineGrid(Hex);
