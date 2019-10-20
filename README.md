@@ -9,10 +9,7 @@ and [PixiJS](http://www.pixijs.com/) v4.7.0 for rendering.
 
 -  Edge size
 -  Orientation
--  Number of hexes (x/columns,y/rows)
--  Shapes
--  Coordinate system
+-  Number of hexes (columns,rows)
+-  Coordinates
 -  Show / hide coordinates
--  Color
--  Zoom
 

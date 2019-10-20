@@ -8,11 +8,18 @@ window.onload = function() {
         screenH: window.innerHeight - 100,
         hexSize: 36,
         hexOrientation: 'flat',
-        hexColums: (window.innerWidth - 100) / 54, // x
-        hexRows:  (window.innerHeight - 100) / 72, // y
+        hexColums: Math.ceil((window.innerWidth - 100) / 54), // x
+        hexRows:  Math.ceil((window.innerHeight - 100) / (36*1.731)), // y
         lineThickness: 2,
-        lineColor: 0x999999
+        lineColor: 0x999999,
+        hideCoords: false
     };
+
+    $('#hexSize').val(settings.hexSize);
+    $('#hexOrientation').val(settings.hexOrientation);
+    $('#hexColums').val(settings.hexColums);
+    $('#hexRows').val(settings.hexRows);
+    $('#lineThickness').val(settings.lineThickness);
 
     let canvas = document.getElementById("canvas");
     let app = new PIXI.Application({ width: settings.screenW, height: settings.screenH, transparent: true, view: canvas });
@@ -28,7 +35,9 @@ window.onload = function() {
 
 function loadGrid(app, settings) {
     let graphics = new PIXI.Graphics();
+    console.log(settings)
     let Hex = Honeycomb.extendHex({ size: settings.hexSize,  orientation: settings.hexOrientation });
+    //let Hex = Honeycomb.extendHex({ size: {width: 72, height: 72},  orientation: settings.hexOrientation });
     let Grid = Honeycomb.defineGrid(Hex);
 
     // set a line style of 1px wide and color #999
@@ -49,8 +58,22 @@ function loadGrid(app, settings) {
         otherCorners.forEach(({ x, y }) => graphics.lineTo(x, y));
         // finish at the first corner
         graphics.lineTo(firstCorner.x, firstCorner.y);
-console.log('hex')
-        app.stage.addChild(graphics)
+
+        app.stage.addChild(graphics);
+
+        const centerPosition = hex.center().add(point);
+        const coordinates = hex.coordinates();
+
+        if (settings.hideCoords === false) {
+            let fontSize = 12;
+            if (settings.hexSize < 15) fontSize = settings.hexSize / 1.5;
+            let text = new PIXI.Text(coordinates.x + ','+ coordinates.y,{fontFamily : 'Arial', fontSize: fontSize, fill : 0x6699CC, align : 'center'});
+            text.x = centerPosition.x;
+            text.y = centerPosition.y;
+            text.anchor.set(0.5);
+
+            app.stage.addChild(text);
+        }
     });
 }
 
@@ -59,11 +82,12 @@ function applySettings(app) {
     settings.screenW = window.innerWidth - 100;
     settings.screenH = window.innerHeight - 100;
     settings.hexSize = parseInt($('#hexSize').val()) || 36;
-    settings.hexOrientation = parseInt($('#hexOrientation').val()) || 'flat';
+    settings.hexOrientation = $('#hexOrientation').val() || 'flat';
     settings.hexColums = parseInt($('#hexColums').val()) || (window.innerWidth - 100) / 54;
     settings.hexRows = parseInt($('#hexRows').val()) || (window.innerHeight - 100) / 72;
     settings.lineThickness = parseInt($('#lineThickness').val()) || 2;
     settings.lineColor = 0x999999;
+    settings.hideCoords = $('#hideCoords').is(":checked");
 
     loadGrid(app, settings);
     $("#gridSettingsModal").modal("hide");
