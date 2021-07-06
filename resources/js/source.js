@@ -8,7 +8,7 @@ window.onload = function() {
         screenH: window.innerHeight - 100,
         hexSize: 36,
         hexOrientation: 'flat',
-        hexColums: Math.ceil((window.innerWidth - 100) / 54), // x
+        hexColumns: Math.ceil((window.innerWidth - 100) / 54), // x
         hexRows:  Math.ceil((window.innerHeight - 100) / (36*1.731)), // y
         lineThickness: 2,
         lineColor: 0x999999,
@@ -17,7 +17,7 @@ window.onload = function() {
 
     $('#hexSize').val(settings.hexSize);
     $('#hexOrientation').val(settings.hexOrientation);
-    $('#hexColums').val(settings.hexColums);
+    $('#hexColumns').val(settings.hexColumns);
     $('#hexRows').val(settings.hexRows);
     $('#lineThickness').val(settings.lineThickness);
 
@@ -45,7 +45,7 @@ function loadGrid(app, settings) {
     graphics.lineStyle(settings.lineThickness, settings.lineColor);
 
     // render hex grid
-    let gr = Grid.rectangle({ width: settings.hexColums, height: settings.hexRows });
+    let gr = Grid.rectangle({ width: settings.hexColumns, height: settings.hexRows });
     gr.forEach(hex => {
         const point = hex.toPoint();
         // add the hex's position to each of its corner points
@@ -84,7 +84,7 @@ function applySettings(app) {
     settings.screenH = window.innerHeight - 100;
     settings.hexSize = parseInt($('#hexSize').val()) || 36;
     settings.hexOrientation = $('#hexOrientation').val() || 'flat';
-    settings.hexColums = parseInt($('#hexColums').val()) || (window.innerWidth - 100) / 54;
+    settings.hexColumns = parseInt($('#hexColumns').val()) || (window.innerWidth - 100) / 54;
     settings.hexRows = parseInt($('#hexRows').val()) || (window.innerHeight - 100) / 72;
     settings.lineThickness = parseInt($('#lineThickness').val()) || 2;
     settings.lineColor = 0x999999;
