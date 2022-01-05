@@ -2,7 +2,7 @@
 
 window.onload = function() {
 
-    //adapt sizes to the screen size
+    // Adapt sizes to the screen size
     let settings = {
         screenW: window.innerWidth - 100,
         screenH: window.innerHeight - 100,
